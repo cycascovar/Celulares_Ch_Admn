@@ -11,3 +11,10 @@ of their sales, guarantees, repairing services, among other things such as gener
 
 This small project also contains the administrator module. If the administrator visits each store often, they will be able to retrieve anything they need of the store or the other stores.
 
+Updates
+=================
+
+01/25/2014: 
+  * There are some cute icons instead of solid buttons.
+  * I have added a module for the owner of the stores. I just need to work on some forms for that module.
+  * Redesigned database [will be uploaded as soon as I make sure it works properly.]
