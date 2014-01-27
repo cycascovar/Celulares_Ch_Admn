@@ -5,7 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, Menus, StdCtrls, Buttons, DB, ZAbstractRODataset,
-  ZAbstractDataset, ZDataset, pBarcode, pCode128, ComCtrls, pEAN128;
+  ZAbstractDataset, ZDataset, pBarcode, pCode128, ComCtrls, pEAN128,
+  IWVCLBaseControl, IWBaseControl, IWBaseHTMLControl, IWControl, IWCompLabel,
+  IWDBStdCtrls, ExtCtrls;
 
 type
   TF_Recargas = class(TForm)
@@ -27,10 +29,13 @@ type
     StatusBar1: TStatusBar;
     Barcode_EAN1281: TBarcode_EAN128;
     Label4: TLabel;
+    Timer1: TTimer;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure codigoKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,6 +72,17 @@ begin
     ZQuery1.Filtered := false;
     ZQuery1.Filter := 'Codigo LIKE'+QuotedStr('*'+codigo.Text+'*');
     ZQuery1.Filtered := true;
+end;
+
+procedure TF_Recargas.FormShow(Sender: TObject);
+begin
+    StatusBar1.Panels[0].Text := DateToStr(Date()); //fecha
+    StatusBar1.Panels[0].Width := 70;
+end;
+
+procedure TF_Recargas.Timer1Timer(Sender: TObject);
+begin
+    StatusBar1.Panels[1].Text := TimeToStr(Time());
 end;
 
 end.

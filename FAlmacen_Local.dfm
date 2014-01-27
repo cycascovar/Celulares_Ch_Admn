@@ -805,4 +805,9 @@ object FAlmacenLocal: TFAlmacenLocal
     Left = 456
     Top = 312
   end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 80
+    Top = 544
+  end
 end

@@ -48,6 +48,7 @@ type
     Label4: TLabel;
     Label12: TLabel;
     Excel: TExcelApplication;
+    Timer1: TTimer;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -61,6 +62,7 @@ type
     procedure BitBtn4Click(Sender: TObject);
     procedure Edit3KeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Edit2KeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -212,6 +214,11 @@ begin
     ZQAlmacen.Filtered := true;
 end;
 
+procedure TFAlmacenLocal.Timer1Timer(Sender: TObject);
+begin
+    StatusBar1.Panels[1].Text := TimeToStr(Time());
+end;
+
 function TFAlmacenLocal.totalInventario(ZQAlmacen: TZQuery): Integer;
 begin
 //codigo para contar elementos actuales
@@ -219,6 +226,8 @@ end;
 
 procedure TFAlmacenLocal.FormShow(Sender: TObject);
 begin
+    StatusBar1.Panels[0].Text := DateToStr(Date()); //fecha
+    StatusBar1.Panels[0].Width := 70;
     FAlmacenLocal.Caption := 'Inventario - Celulares "Chapulh", (sucursal '+FPrincipal.sucursal+')';
     BitBtn1.Caption := 'Vender '+#13+'equipo';
 

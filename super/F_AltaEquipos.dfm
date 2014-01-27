@@ -1,9 +1,9 @@
 object FAltaEquipo: TFAltaEquipo
   Left = 0
   Top = 0
-  Caption = 'FAltaEquipo'
+  Caption = 'Sistema para administradores: Alta de equipos'
   ClientHeight = 360
-  ClientWidth = 851
+  ClientWidth = 1033
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,12 +11,13 @@ object FAltaEquipo: TFAltaEquipo
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 16
-    Top = 24
+    Left = 8
+    Top = 8
     Width = 450
     Height = 13
     Caption = 
@@ -78,42 +79,43 @@ object FAltaEquipo: TFAltaEquipo
     Height = 13
     Caption = 'Precio'
   end
-  object DBLookupComboBox1: TDBLookupComboBox
+  object listaSucursales: TDBLookupComboBox
     Left = 177
     Top = 269
     Width = 145
     Height = 21
+    ListSource = DSListaSuc
     TabOrder = 0
   end
-  object Edit1: TEdit
+  object marcaequipo: TEdit
     Left = 64
     Top = 61
     Width = 121
     Height = 21
     TabOrder = 1
   end
-  object Edit2: TEdit
+  object modeloequipo: TEdit
     Left = 64
     Top = 93
     Width = 121
     Height = 21
     TabOrder = 2
   end
-  object Edit3: TEdit
+  object imeiequipo: TEdit
     Left = 64
-    Top = 133
+    Top = 138
     Width = 121
     Height = 21
     TabOrder = 3
   end
-  object Edit4: TEdit
+  object iccidequipo: TEdit
     Left = 64
     Top = 165
     Width = 121
     Height = 21
     TabOrder = 4
   end
-  object Edit5: TEdit
+  object numeroequipo: TEdit
     Left = 120
     Top = 205
     Width = 121
@@ -133,6 +135,7 @@ object FAltaEquipo: TFAltaEquipo
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 6
+    OnClick = Button1Click
   end
   object Button2: TButton
     Left = 247
@@ -148,18 +151,20 @@ object FAltaEquipo: TFAltaEquipo
     ParentFont = False
     TabOrder = 7
   end
-  object Edit6: TEdit
+  object precioequipo: TEdit
     Left = 53
     Top = 235
     Width = 145
     Height = 21
     TabOrder = 8
   end
-  object DBGrid1: TDBGrid
+  object DBAlmacenes: TDBGrid
+    AlignWithMargins = True
     Left = 344
     Top = 61
-    Width = 497
+    Width = 681
     Height = 284
+    DataSource = DSSucursales
     TabOrder = 9
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -169,24 +174,37 @@ object FAltaEquipo: TFAltaEquipo
     Columns = <
       item
         Expanded = False
+        FieldName = 'Sucursal'
+        Width = 94
+        Visible = True
+      end
+      item
+        Expanded = False
         FieldName = 'Marca'
+        Width = 92
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'Modelo'
+        Width = 101
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'IMEI'
-        Width = 99
+        Width = 111
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'ICCID'
-        Width = 131
+        Width = 124
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Numero'
         Visible = True
       end
       item
@@ -194,5 +212,34 @@ object FAltaEquipo: TFAltaEquipo
         FieldName = 'Precio'
         Visible = True
       end>
+  end
+  object sucursal: TEdit
+    Left = 352
+    Top = 34
+    Width = 105
+    Height = 21
+    TabOrder = 10
+  end
+  object ZQSucursales: TZQuery
+    Connection = FPrincipalAdmin.ZConexion
+    Params = <>
+    Left = 504
+    Top = 104
+  end
+  object DSSucursales: TDataSource
+    DataSet = ZQSucursales
+    Left = 480
+    Top = 200
+  end
+  object DSListaSuc: TDataSource
+    DataSet = ZQListaSuc
+    Left = 168
+    Top = 296
+  end
+  object ZQListaSuc: TZQuery
+    Connection = FPrincipalAdmin.ZConexion
+    Params = <>
+    Left = 120
+    Top = 304
   end
 end

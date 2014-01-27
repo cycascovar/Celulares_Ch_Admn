@@ -15,6 +15,7 @@ type
     Label2: TLabel;
     BitBtn2: TBitBtn;
     Image1: TImage;
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,5 +30,12 @@ uses
     F_PrincipalAdmin;
 
 {$R *.dfm}
+
+procedure TFALogin.BitBtn1Click(Sender: TObject);
+begin
+    FPrincipalAdmin.Enabled := false;
+    FPrincipalAdmin := TFPrincipalAdmin.Create(self);
+    FPrincipalAdmin.ShowModal;
+end;
 
 end.

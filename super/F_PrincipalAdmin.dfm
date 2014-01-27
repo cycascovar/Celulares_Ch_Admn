@@ -3,7 +3,7 @@ object FPrincipalAdmin: TFPrincipalAdmin
   Top = 0
   Caption = 'FPrincipalAdmin'
   ClientHeight = 485
-  ClientWidth = 658
+  ClientWidth = 805
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,19 +23,20 @@ object FPrincipalAdmin: TFPrincipalAdmin
     Caption = 'Usuarios'
   end
   object Garantias: TPageControl
-    Left = 8
-    Top = 2
-    Width = 645
+    Left = 5
+    Top = 8
+    Width = 792
     Height = 312
     ActivePage = TabSheet1
     TabOrder = 0
     OnChange = GarantiasChange
     object TabSheet1: TTabSheet
       Caption = 'Garantias'
+      ExplicitWidth = 637
       object DBGrid1: TDBGrid
-        Left = 3
-        Top = 24
-        Width = 631
+        Left = 11
+        Top = 9
+        Width = 758
         Height = 169
         DataSource = DSGarantias
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -72,6 +73,11 @@ object FPrincipalAdmin: TFPrincipalAdmin
           end
           item
             Expanded = False
+            FieldName = 'IMEI'
+            Visible = True
+          end
+          item
+            Expanded = False
             FieldName = 'Titular'
             Width = 46
             Visible = True
@@ -83,32 +89,133 @@ object FPrincipalAdmin: TFPrincipalAdmin
             Visible = True
           end>
       end
+      object botonclientesgtia: TBitBtn
+        Left = 3
+        Top = 240
+        Width = 75
+        Height = 25
+        Caption = 'Ver clientes'
+        DoubleBuffered = True
+        ParentDoubleBuffered = False
+        TabOrder = 1
+      end
     end
     object TabSheet2: TTabSheet
       Caption = 'Reparaciones'
       ImageIndex = 1
+      ExplicitWidth = 637
+      object gridreparaciones: TDBGrid
+        Left = 3
+        Top = 3
+        Width = 734
+        Height = 238
+        DataSource = DSReparaciones
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'Sucursal'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Recibido por'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Marca'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Modelo'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'IMEI'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Titular'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Observaciones'
+            Width = 115
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Ventas'
+      ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitWidth = 637
+      object Label1: TLabel
+        Left = 3
+        Top = 3
+        Width = 107
+        Height = 13
+        Caption = 'Estadisticas de ventas'
+      end
+      object Label2: TLabel
+        Left = 3
+        Top = 40
+        Width = 105
+        Height = 13
+        Caption = 'Equipos mas vendidos'
+      end
+      object Label3: TLabel
+        Left = 507
+        Top = 40
+        Width = 117
+        Height = 13
+        Caption = 'Equipos menos vendidos'
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = 'Almacenes'
+      ImageIndex = 3
+      object BitBtn1: TBitBtn
+        Left = 328
+        Top = 232
+        Width = 75
+        Height = 25
+        DoubleBuffered = True
+        ParentDoubleBuffered = False
+        TabOrder = 0
+      end
     end
   end
   object ZQGarantias: TZQuery
     Connection = ZConexion
     Params = <>
-    Left = 408
-    Top = 176
+    Left = 24
+    Top = 168
   end
   object DSGarantias: TDataSource
     DataSet = ZQGarantias
-    Left = 480
-    Top = 168
+    Left = 24
+    Top = 128
   end
   object ZConexion: TZConnection
-    Catalog = 'chapulhuacan'
+    Catalog = 'chdesarrollo'
     Protocol = 'mysql-5'
-    HostName = 'localhost'
-    Database = 'chapulhuacan'
+    HostName = '192.168.1.70'
+    Database = 'chdesarrollo'
     User = 'root'
     Password = 'toor'
-    Left = 576
-    Top = 224
+    Left = 624
+    Top = 336
   end
   object MainMenu1: TMainMenu
     Left = 544
@@ -128,6 +235,7 @@ object FPrincipalAdmin: TFPrincipalAdmin
       end
       object Inventario1: TMenuItem
         Caption = 'Celulares en inventario'
+        OnClick = Inventario1Click
       end
       object N1: TMenuItem
         Caption = '-'
@@ -138,9 +246,26 @@ object FPrincipalAdmin: TFPrincipalAdmin
       object Equiposenreparacin1: TMenuItem
         Caption = 'Equipos en reparaci'#243'n'
       end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object Ventas1: TMenuItem
+        Caption = 'Clientes ventas'
+      end
     end
     object Salir1: TMenuItem
       Caption = 'Salir'
     end
+  end
+  object ZQReparaciones: TZQuery
+    Connection = ZConexion
+    Params = <>
+    Left = 592
+    Top = 128
+  end
+  object DSReparaciones: TDataSource
+    DataSet = ZQReparaciones
+    Left = 592
+    Top = 168
   end
 end

@@ -5,12 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, StdCtrls, Grids, DBGrids, DB, ZAbstractRODataset,
-  ZAbstractDataset, ZDataset, ComCtrls, Buttons;
+  ZAbstractDataset, ZDataset, ComCtrls, Buttons, ExtCtrls;
 
 type
   TFReparaciones = class(TForm)
     DBGrid1: TDBGrid;
-    Label1: TLabel;
     Edit1: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
@@ -41,6 +40,7 @@ type
     BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
     entregarboton: TBitBtn;
+    Timer1: TTimer;
     procedure Button3Click(Sender: TObject);
     procedure entregarBotonClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -58,6 +58,7 @@ type
     procedure Edit1KeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Edit2KeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Edit3KeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
     idEquipoReparacion : Integer;
@@ -448,7 +449,8 @@ procedure TFReparaciones.FormShow(Sender: TObject);
 begin
     entregarBoton.Enabled := false;
     fecharecibido.Date := Date();
-
+    StatusBar1.Panels[0].Text := DateToStr(Date()); //fecha
+    StatusBar1.Panels[0].Width := 70;
     FReparaciones.Caption := 'Equipos en garantía - Celulares "Chapulh", (sucursal '+FPrincipal.sucursal+')';
 
     FormatSettings.ShortDateFormat := 'yyyy-mm-dd';
@@ -465,6 +467,11 @@ begin
     ZQReparaciones.Open;
     FormatSettings.ShortDateFormat := 'dd/mm/yyyy';
     DBGrid1.Update;
+end;
+
+procedure TFReparaciones.Timer1Timer(Sender: TObject);
+begin
+    StatusBar1.Panels[1].Text := TimeToStr(Time());
 end;
 
 end.

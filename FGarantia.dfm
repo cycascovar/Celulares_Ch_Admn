@@ -296,9 +296,9 @@ object FGarantias: TFGarantias
     object Label8: TLabel
       Left = 337
       Top = 13
-      Width = 71
+      Width = 108
       Height = 13
-      Caption = 'Observaciones'
+      Caption = 'Observaciones / Fallas'
     end
     object Label9: TLabel
       Left = 337
@@ -312,6 +312,7 @@ object FGarantias: TFGarantias
       Top = 32
       Width = 121
       Height = 21
+      NumbersOnly = True
       TabOrder = 0
     end
     object observaciones: TMemo
@@ -340,6 +341,7 @@ object FGarantias: TFGarantias
       Top = 123
       Width = 121
       Height = 21
+      NumbersOnly = True
       TabOrder = 4
     end
     object accesorios: TMemo
@@ -715,5 +717,10 @@ object FGarantias: TFGarantias
     Params = <>
     Left = 720
     Top = 192
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 80
+    Top = 568
   end
 end

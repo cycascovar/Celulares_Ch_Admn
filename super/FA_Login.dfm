@@ -16,16 +16,16 @@ object FALogin: TFALogin
   object Label1: TLabel
     Left = 16
     Top = 13
-    Width = 31
+    Width = 36
     Height = 13
-    Caption = 'Label1'
+    Caption = 'Usuario'
   end
   object Label2: TLabel
     Left = 24
     Top = 80
-    Width = 31
+    Width = 56
     Height = 13
-    Caption = 'Label2'
+    Caption = 'Contrase'#241'a'
   end
   object Image1: TImage
     Left = 160
@@ -280,6 +280,7 @@ object FALogin: TFALogin
     DoubleBuffered = True
     ParentDoubleBuffered = False
     TabOrder = 0
+    OnClick = BitBtn1Click
   end
   object Edit1: TEdit
     Left = 16
@@ -287,15 +288,14 @@ object FALogin: TFALogin
     Width = 121
     Height = 21
     TabOrder = 1
-    Text = 'Edit1'
   end
   object Edit2: TEdit
     Left = 16
     Top = 96
     Width = 121
     Height = 21
+    PasswordChar = '*'
     TabOrder = 2
-    Text = 'Edit2'
   end
   object BitBtn2: TBitBtn
     Left = 120

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, Menus, DB, ZAbstractRODataset,
-  ZAbstractDataset, ZDataset, ComCtrls, Buttons;
+  ZAbstractDataset, ZDataset, ComCtrls, Buttons, ExtCtrls;
 
 type
   TFGarantias = class(TForm)
@@ -42,6 +42,7 @@ type
     BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
+    Timer1: TTimer;
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -58,6 +59,7 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
     ZQMovimiento : TZQuery;
@@ -128,10 +130,9 @@ begin
             ZQGarantias.SQL.Add('JOIN cliente_garantia ON equipo_garantia.idequipo_garantia = cliente_garantia.idequipo_garantia');
             ZQGarantias.SQL.Add('JOIN sucursal ON sucursal.idsucursal = equipo_garantia.idsucursal');
             ZQGarantias.SQL.Add('AND equipo_garantia.idsucursal = '+IntToStr(FPrincipal.idSucursal)+'');
+            ZQGarantias.SQL.Add('ORDER BY fecha DESC');
             ZQGarantias.ExecSQL;
-            ZQGarantias.Open;
             DBGrid1.Update;
-
             Application.MessageBox('El equipo ha sido agregado a garantía.','Información',MB_ICONINFORMATION);
         end
         else
@@ -528,6 +529,9 @@ begin
     ZQTemp.Options := [doCalcDefaults];
     ZQTemp.AutoCalcFields := true;
 
+    StatusBar1.Panels[0].Text := DateToStr(Date()); //fecha
+    StatusBar1.Panels[0].Width := 70;
+
     FGarantias.Caption := 'Equipos en garantía - Celulares "Chapulh", (sucursal '+FPrincipal.sucursal+')';
 //    FormatDateTime('YYYY/MM/DD',Date());
     FormatSettings.ShortDateFormat := 'dd/mm/yyyy';
@@ -542,11 +546,15 @@ begin
     ZQGarantias.SQL.Add('JOIN sucursal ON sucursal.idsucursal = equipo_garantia.idsucursal');
     ZQGarantias.SQL.Add('AND equipo_garantia.idsucursal = '+IntToStr(FPrincipal.idSucursal)+'');
     ZQGarantias.SQL.Add('AND fecha="'+DateToStr(Date())+'"');
-    ZQGarantias.SQL.Add('ORDER BY fecha');
     ZQGarantias.ExecSQL;
     ZQGarantias.Open;
     FormatSettings.ShortDateFormat := 'dd/mm/yyyy';
     DBGrid1.Update;
+end;
+
+procedure TFGarantias.Timer1Timer(Sender: TObject);
+begin
+    StatusBar1.Panels[1].Text := TimeToStr(Time());
 end;
 
 end.

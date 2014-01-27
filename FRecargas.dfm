@@ -3,7 +3,7 @@ object F_Recargas: TF_Recargas
   Top = 0
   Caption = 'Recargas'
   ClientHeight = 611
-  ClientWidth = 516
+  ClientWidth = 512
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +11,7 @@ object F_Recargas: TF_Recargas
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -153,7 +154,7 @@ object F_Recargas: TF_Recargas
   object StatusBar1: TStatusBar
     Left = 0
     Top = 592
-    Width = 516
+    Width = 512
     Height = 19
     BiDiMode = bdRightToLeft
     Panels = <
@@ -170,7 +171,7 @@ object F_Recargas: TF_Recargas
         Width = 50
       end>
     ParentBiDiMode = False
-    ExplicitTop = 639
+    ExplicitWidth = 516
   end
   object ZQuery1: TZQuery
     Connection = FPrincipal.ZConexion
@@ -184,8 +185,8 @@ object F_Recargas: TF_Recargas
   end
   object ZQRecargas: TZQuery
     Params = <>
-    Left = 368
-    Top = 394
+    Left = 408
+    Top = 402
   end
   object DSRecargas: TDataSource
     Left = 312
@@ -202,5 +203,10 @@ object F_Recargas: TF_Recargas
     Ratio = 2.000000000000000000
     Left = 416
     Top = 464
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 80
+    Top = 592
   end
 end

@@ -2,7 +2,7 @@ object FReparaciones: TFReparaciones
   Left = 0
   Top = 0
   Caption = 's'
-  ClientHeight = 586
+  ClientHeight = 585
   ClientWidth = 873
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,21 +15,6 @@ object FReparaciones: TFReparaciones
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 211
-    Top = 17
-    Width = 437
-    Height = 13
-    Caption = 
-      'Los text edit actuaran como filtros, buscando solamente en el gr' +
-      'id y no en la base de datos'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clHighlight
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
   object Label2: TLabel
     Left = 122
     Top = 230
@@ -281,9 +266,9 @@ object FReparaciones: TFReparaciones
     object Label10: TLabel
       Left = 352
       Top = 60
-      Width = 71
+      Width = 108
       Height = 13
-      Caption = 'Observaciones'
+      Caption = 'Observaciones / Fallas'
     end
     object Label11: TLabel
       Left = 16
@@ -326,6 +311,7 @@ object FReparaciones: TFReparaciones
       Top = 152
       Width = 245
       Height = 21
+      NumbersOnly = True
       TabOrder = 4
     end
     object BitBtn3: TBitBtn
@@ -493,7 +479,7 @@ object FReparaciones: TFReparaciones
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 567
+    Top = 566
     Width = 873
     Height = 19
     BiDiMode = bdRightToLeft
@@ -694,5 +680,10 @@ object FReparaciones: TFReparaciones
     Params = <>
     Left = 488
     Top = 168
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 80
+    Top = 568
   end
 end
