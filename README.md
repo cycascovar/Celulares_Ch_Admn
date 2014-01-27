@@ -21,4 +21,4 @@ Updates
 
 26/01/2014:
  * Admin can add new phones to every store they decide.
- * I'm working on the "Summary" section which will be the main form. Some statitics can be found here, such as most-sold phones and less sold phones too.
+ * I'm working on the "Summary" section which will be the main form. Some statitics can be found here, such as best selling phones and less sold phones too.
